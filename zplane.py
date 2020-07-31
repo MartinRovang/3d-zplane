@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-def z_plane3D(b, a = [], extent = [-2, 2, -2, 2], figsize_ = [16, 12]):
+def z_plane3D(b, a = [], extent = [-2, 2, -2, 2], figsize_ = [10, 7]):
 
     """
     Plots the poles and zeros as 3D plot showing the placement in the complex plane with the mangitude response.
@@ -19,13 +19,6 @@ def z_plane3D(b, a = [], extent = [-2, 2, -2, 2], figsize_ = [16, 12]):
     roots_a = a_.r
     b_ = np.flip(b_)
     a_ = np.flip(a_)
-    
-
-    if (np.min(roots_b) or np.min(roots_a) ) < (extent[0] or extent[2]):
-        print('roots outside extent')
-    
-    if (np.max(roots_b) or np.max(roots_a) ) > (extent[1] or extent[3]):
-        print('roots outside extent')
 
 
     x_lin = np.linspace(extent[0], extent[1], 2000)
@@ -69,6 +62,6 @@ def z_plane3D(b, a = [], extent = [-2, 2, -2, 2], figsize_ = [16, 12]):
 
 
 
-b = [1/4, 1/4, 1/4, 1/4]
+b = np.ones(4)/4
 
 z_plane3D(b)
